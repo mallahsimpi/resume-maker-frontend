@@ -1,69 +1,227 @@
-import Image from "next/image";
+
+import Link from "next/link";
+import Navbar from "@/components/Navbar";
+
+import {
+  ArrowRight,
+  FileText,
+  Sparkles,
+  Palette,
+  ShieldCheck,
+  Zap,
+  CheckCircle2
+} from "lucide-react";
+
+const features = [
+  {
+    icon: FileText,
+    title: "Easy Resume Builder",
+    description: "Create and manage your professional resume in minutes."
+  },
+  {
+    icon: Palette,
+    title: "Professional Templates",
+    description: "Choose clean, modern and ATS-friendly resume layouts."
+  },
+  {
+    icon: ShieldCheck,
+    title: "Secure Resume Storage",
+    description: "Your resume information is protected by authentication."
+  },
+  {
+    icon: Zap,
+    title: "Live Preview",
+    description: "See your resume changes instantly while editing."
+  }
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="min-h-screen">
+      <Navbar />
+
+      <section className="overflow-hidden bg-white">
+        <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 py-24 md:grid-cols-2 md:py-32">
+
+          <div>
+            <div className="mb-7 inline-flex items-center gap-2 rounded-full bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-700">
+              <Sparkles size={16} />
+              Your career starts here
+            </div>
+
+            <h1 className="text-5xl font-extrabold leading-tight tracking-tight md:text-6xl">
+              Build Your
+              <span className="block text-indigo-600">
+                Perfect Resume.
+              </span>
+            </h1>
+
+            <p className="mt-7 max-w-xl text-lg leading-8 text-slate-500">
+              Create professional resumes, showcase your skills
+              and make your next career opportunity count.
+              Everything you need in one simple platform.
+            </p>
+
+            <div className="mt-9 flex flex-wrap gap-4">
+              <Link
+                href="/register"
+                className="flex items-center gap-2 rounded-xl bg-indigo-600 px-7 py-4 font-semibold text-white shadow-lg shadow-indigo-200 hover:bg-indigo-700"
+              >
+                Create My Resume
+                <ArrowRight size={18} />
+              </Link>
+
+              <Link
+                href="/login"
+                className="rounded-xl border border-slate-200 px-7 py-4 font-semibold hover:bg-slate-50"
+              >
+                Sign In
+              </Link>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-5 text-sm text-slate-500">
+              <span className="flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-green-600" />
+                Easy to use
+              </span>
+
+              <span className="flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-green-600" />
+                Professional layouts
+              </span>
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="absolute -right-10 -top-10 h-72 w-72 rounded-full bg-indigo-100 blur-3xl" />
+
+            <div className="relative rounded-3xl border border-slate-200 bg-white p-5 shadow-2xl">
+
+              <div className="mb-5 flex items-center justify-between">
+                <div>
+                  <p className="font-bold">Resume Preview</p>
+                  <p className="text-xs text-slate-400">
+                    Professional Template
+                  </p>
+                </div>
+
+                <FileText className="text-indigo-600" size={28} />
+              </div>
+
+              <div className="rounded-xl border p-7">
+                <h2 className="text-2xl font-bold">Alex Morgan</h2>
+
+                <p className="mt-1 text-sm font-semibold text-indigo-600">
+                  Full Stack Developer
+                </p>
+
+                <p className="mt-3 text-xs text-slate-400">
+                  alex@example.com | +1 234 567 890
+                </p>
+
+                <hr className="my-5" />
+
+                <h3 className="font-bold">PROFILE</h3>
+
+                <p className="mt-2 text-sm leading-6 text-slate-500">
+                  Experienced developer passionate about
+                  creating modern web applications.
+                </p>
+
+                <h3 className="mt-6 font-bold">SKILLS</h3>
+
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {["React", "Next.js", "Node.js", "MongoDB"].map(item => (
+                    <span key={item}
+                      className="rounded-md bg-indigo-50 px-3 py-2 text-xs text-indigo-700">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+
+                <h3 className="mt-6 font-bold">EXPERIENCE</h3>
+
+                <div className="mt-3">
+                  <p className="text-sm font-semibold">
+                    Software Developer
+                  </p>
+                  <p className="mt-1 text-xs text-slate-500">
+                    Building modern web applications
+                  </p>
+                </div>
+
+                <div className="mt-6 rounded-lg bg-indigo-50 p-3 text-center text-sm font-semibold text-indigo-700">
+                  Your professional journey starts here
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="features" className="mx-auto max-w-7xl px-6 py-24">
+
+        <div className="mx-auto mb-14 max-w-2xl text-center">
+          <p className="font-semibold text-indigo-600">
+            POWERFUL FEATURES
+          </p>
+
+          <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+            Everything You Need to Build Your Resume
+          </h2>
+
+          <p className="mt-4 text-slate-500">
+            A simple platform designed to help students,
+            freshers and professionals.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {features.map((feature) => {
+            const Icon = feature.icon;
+
+            return (
+              <div key={feature.title}
+                className="dashboard-card p-7">
+                <div className="inline-flex rounded-xl bg-indigo-50 p-3 text-indigo-600">
+                  <Icon size={25} />
+                </div>
+
+                <h3 className="mt-6 font-bold">
+                  {feature.title}
+                </h3>
+
+                <p className="mt-3 text-sm leading-6 text-slate-500">
+                  {feature.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="mx-6 mb-20 rounded-3xl bg-indigo-600 px-6 py-16 text-center text-white md:mx-auto md:max-w-7xl">
+        <h2 className="text-3xl font-bold">
+          Ready to Create Your Resume?
+        </h2>
+
+        <p className="mt-4 text-indigo-100">
+          Start building your professional profile today.
+        </p>
+
+        <Link
+          href="/register"
+          className="mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-7 py-4 font-semibold text-indigo-700 hover:bg-indigo-50"
+        >
+          Get Started
+          <ArrowRight size={18} />
+        </Link>
+      </section>
+
+      <footer className="border-t bg-white py-8 text-center text-sm text-slate-500">
+        © 2026 ResumeCraft. All rights reserved.
+      </footer>
+    </main>
   );
 }
